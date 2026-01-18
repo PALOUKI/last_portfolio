@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio • Godbless | Étudiant Génie Logiciel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <canvas id="matrix-bg" aria-hidden="true"></canvas>
+
+    <header class="hero">
+      <div class="hero__brand">
+        <span class="logo">&lt;DEV/&gt;</span>
+        <button id="themeToggle" aria-label="Basculer le thème">
+          <span class="toggle-icon">☾</span>
+        </button>
+      </div>
+      <div class="hero__content">
+        <p class="eyebrow">Étudiant 3ᵉ année · Génie logiciel</p>
+        <h1>Salut, je suis <span data-scramble>Godbless</span>.</h1>
+        <p class="tagline">
+          Ingénieur logiciel créatif, je connecte design system, architecture propre
+          et automatisation pour livrer des apps fiables, documentées et prêtes à scaler.
+        </p>
+        <div class="hero__actions">
+          <button class="btn primary" type="button" data-open-tab="projects">Voir mes projets</button>
+          <a class="btn ghost" href="#contact">Discuter ensemble</a>
+          <a class="btn ghost" href="assets/cv.pdf" download="CV_Godbless.pdf">📄 Télécharger CV</a>
+        </div>
+        <ul class="hero__stats">
+          <li>
+            <strong data-scramble>25k+</strong>
+            <span>Lignes de code reviewées & testées</span>
+          </li>
+          <li>
+            <strong data-scramble>12</strong>
+            <span>Projets académiques & side quests</span>
+          </li>
+          <li>
+            <strong data-scramble>∞</strong>
+            <span>Sessions nocturnes caféinées</span>
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker__track">
+        <span>printf("Stay curious, stay shipping");</span>
+        <span>// Hack the syllabus, rewrite the spec</span>
+        <span>npm run deploy -- --galaxy=milky_way</span>
+        <span>sudo systemctl restart creativity.service</span>
+      </div>
+    </div>
+
+    <main>
+      <div class="command-center">
+        <div class="tab-nav" role="tablist" aria-label="Sections principales">
+          <button
+            id="tab-about"
+            class="tab active"
+            role="tab"
+            aria-selected="true"
+            aria-controls="about"
+            data-tab="about"
+          >
+            Profil
+          </button>
+          <button
+            id="tab-geek-lab"
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="geek-lab"
+            data-tab="geek-lab"
+          >
+            Dev Lab
+          </button>
+          <button
+            id="tab-timeline"
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="timeline"
+            data-tab="timeline"
+          >
+            Timeline
+          </button>
+          <button
+            id="tab-projects"
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="projects"
+            data-tab="projects"
+          >
+            Projets
+          </button>
+          <button
+            id="tab-certs"
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="certs"
+            data-tab="certs"
+          >
+            Certifs & Badges
+          </button>
+          <button
+            id="tab-skills"
+            class="tab"
+            role="tab"
+            aria-selected="false"
+            aria-controls="skills"
+            data-tab="skills"
+          >
+            Compétences
+          </button>
+        </div>
+
+        <div class="tab-panels">
+          <section
+            id="about"
+            class="panel tab-panel active"
+            data-tab-panel="about"
+            role="tabpanel"
+            aria-labelledby="tab-about"
+          >
+            <div class="panel__header">
+              <h2>Profil</h2>
+              <span class="badge">system.out.println("Geek mode ON");</span>
+            </div>
+            <p>
+              Passionné par la conception logicielle, je navigue entre clean architecture,
+              DevOps étudiant et UI futuristes. Je décortique des systèmes complexes,
+              je dessine des API lisibles et je livre des fonctionnalités prêtes pour la prod.
+            </p>
+            <div class="grid two">
+              <article>
+                <h3>Stack actuelle</h3>
+                <ul class="chips">
+                  <li>TypeScript</li>
+                  <li>React</li>
+                  <li>Node.js</li>
+                  <li>Spring Boot</li>
+                  <li>PostgreSQL</li>
+                  <li>Docker</li>
+                </ul>
+              </article>
+              <article>
+                <h3>Soft skills</h3>
+                <ul class="chips">
+                  <li>Lead technique étudiant</li>
+                  <li>Veille techno</li>
+                  <li>Mentorat pair-à-pair</li>
+                  <li>Communication claire</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+
+          <section
+            id="geek-lab"
+            class="panel panel--grid tab-panel"
+            data-tab-panel="geek-lab"
+            role="tabpanel"
+            aria-labelledby="tab-geek-lab"
+            hidden
+          >
+            <div class="panel__header">
+              <h2>Dev Lab</h2>
+              <span class="badge">npm run dev-lab</span>
+            </div>
+            <div class="geek-grid">
+              <article class="terminal-card">
+                <header>
+                  <span class="dot red"></span>
+                  <span class="dot yellow"></span>
+                  <span class="dot green"></span>
+                  <p>~/lab/runtime.log</p>
+                </header>
+                <div class="terminal-body">
+                  <pre><code><span class="prompt">godbless@neo</span>:~$ neofetch
+OS: Ubuntu 24.04 • WM: tmux • Shell: bash
+Stack: TS/React, Spring, Docker, Terraform
+Focus: DX design, observabilité, IA embarquée
+
+<span class="prompt">godbless@neo</span>:~$ ./deploy.sh --env=prod
+✔ tests unitaires
+✔ mutation testing
+✔ audit sécurité
+🚀 release prête</code></pre>
+                </div>
+              </article>
+              <article class="ascii-card">
+                <header>
+                  <h3>Blueprint ASCII</h3>
+                </header>
+                <pre>
+      /\_/\
+     ( •.• )   &lt; stay weird, build stuff /
+     / >🍵     keep the caffeine CI alive
+
+┌── system status ────────────────┐
+│ focus:      clean architecture  │
+│ curiosity:  110%                │
+│ backlog:    ship + iterate      │
+└─────────────────────────────────┘
+                </pre>
+                <p>
+                  Entre deux pull requests, je peaufine mon IDE, j’écris des docs
+                  compréhensibles et j’expérimente de nouveaux patterns front/back.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section
+            id="timeline"
+            class="panel tab-panel"
+            data-tab-panel="timeline"
+            role="tabpanel"
+            aria-labelledby="tab-timeline"
+            hidden
+          >
+            <div class="panel__header">
+              <h2>Timeline</h2>
+              <span class="badge">while(true) { apprendre(); }</span>
+            </div>
+            <div class="timeline">
+              <article>
+                <span class="timeline__year">2025</span>
+                <h3>Projet Capstone • Architecte junior</h3>
+                <p>
+                  Conception d'une plateforme collaborative pour étudiants développeurs
+                  (micro-services, CI/CD GitHub Actions, SSO Keycloak).
+                </p>
+              </article>
+              <article>
+                <span class="timeline__year">2024</span>
+                <h3>Stage • Développement full-stack</h3>
+                <p>
+                  Industrialisation d'un dashboard React + Nest.js, couverture de tests 85%,
+                  monitoring Prometheus/Grafana.
+                </p>
+              </article>
+              <article>
+                <span class="timeline__year">2023</span>
+                <h3>Hackathons & side projects</h3>
+                <p>
+                  Bots Discord, API de recommandation de musique, scripts d'automatisation
+                  pour la vie étudiante.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section
+            id="projects"
+            class="panel tab-panel"
+            data-tab-panel="projects"
+            role="tabpanel"
+            aria-labelledby="tab-projects"
+            hidden
+          >
+            <div class="panel__header">
+              <h2>Projets</h2>
+              <span class="badge">git push --force-with-precision</span>
+            </div>
+            <div class="projects-slider no-js">
+              <button class="slider-btn" data-slide="prev" aria-label="Projets précédents">
+                <span>&larr;</span>
+              </button>
+              <div class="projects-viewport">
+                <div class="projects-track">
+                  <article class="project-card project-card--compact">
+                    <div class="project-preview" data-glow="magenta">
+                      <div>
+                        <p class="preview-label">Observabilité</p>
+                        <p class="preview-title">CodePulse Alerts</p>
+                      </div>
+                      <ul>
+                        <li>Corrélations metrics/Grafana</li>
+                        <li>Playground Notion API</li>
+                      </ul>
+                    </div>
+                    <div class="card__head">
+                      <h3>CodePulse</h3>
+                      <span class="tag">Spring</span>
+                    </div>
+                    <p>
+                      Dashboard de monitoring avec corrélations métriques et exports Notion en un clic.
+                    </p>
+                    <ul>
+                      <li>Clean architecture hexagonale</li>
+                      <li>Tests contract + mutation</li>
+                    </ul>
+                    <div class="project-foot">
+                      <div class="project-stack">
+                        <span>Stack</span>
+                        <div class="stack-chips">
+                          <span>Spring</span>
+                          <span>React</span>
+                          <span>PostgreSQL</span>
+                        </div>
+                      </div>
+                      <div class="project-links">
+                        <a href="https://codepulse.dev" class="pill-link" target="_blank" rel="noreferrer">Live</a>
+                        <a href="https://github.com/godbless-dev/codepulse" class="pill-link ghost" target="_blank" rel="noreferrer">Repo</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="project-card project-card--compact">
+                    <div class="project-preview" data-glow="magenta">
+                      <div>
+                        <p class="preview-label">Observabilité</p>
+                        <p class="preview-title">CodePulse Alerts</p>
+                      </div>
+                      <ul>
+                        <li>Corrélations metrics/Grafana</li>
+                        <li>Playground Notion API</li>
+                      </ul>
+                    </div>
+                    <div class="card__head">
+                      <h3>CodePulse</h3>
+                      <span class="tag">Spring</span>
+                    </div>
+                    <p>
+                      Dashboard de monitoring avec corrélations métriques et exports Notion en un clic.
+                    </p>
+                    <ul>
+                      <li>Clean architecture hexagonale</li>
+                      <li>Tests contract + mutation</li>
+                    </ul>
+                    <div class="project-foot">
+                      <div class="project-stack">
+                        <span>Stack</span>
+                        <div class="stack-chips">
+                          <span>Spring</span>
+                          <span>React</span>
+                          <span>PostgreSQL</span>
+                        </div>
+                      </div>
+                      <div class="project-links">
+                        <a href="https://codepulse.dev" class="pill-link" target="_blank" rel="noreferrer">Live</a>
+                        <a href="https://github.com/godbless-dev/codepulse" class="pill-link ghost" target="_blank" rel="noreferrer">Repo</a>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article class="project-card project-card--compact">
+                    <div class="project-preview" data-glow="lime">
+                      <div>
+                        <p class="preview-label">DevTools</p>
+                        <p class="preview-title">FluxAI CLI</p>
+                      </div>
+                      <ul>
+                        <li>Snippets IA locaux</li>
+                        <li>Templates instantanés</li>
+                      </ul>
+                    </div>
+                    <div class="card__head">
+                      <h3>FluxAI</h3>
+                      <span class="tag">Node · AI</span>
+                    </div>
+                    <p>
+                      Assistant CLI IA pour générer des snippets locaux, templates et revues express.
+                    </p>
+                    <ul>
+                      <li>Intégration OpenAI + LangChain</li>
+                      <li>Plugins personnalisables</li>
+                    </ul>
+                    <div class="project-foot">
+                      <div class="project-stack">
+                        <span>Stack</span>
+                        <div class="stack-chips">
+                          <span>Node</span>
+                          <span>LangChain</span>
+                          <span>CLI</span>
+                        </div>
+                      </div>
+                      <div class="project-links">
+                        <a href="https://fluxai.dev" class="pill-link" target="_blank" rel="noreferrer">Docs</a>
+                        <a href="https://github.com/godbless-dev/fluxai" class="pill-link ghost" target="_blank" rel="noreferrer">GitHub</a>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <button class="slider-btn" data-slide="next" aria-label="Projets suivants">
+                <span>&rarr;</span>
+              </button>
+            </div>
+          </section>
+
+          <section
+            id="certs"
+            class="panel tab-panel"
+            data-tab-panel="certs"
+            role="tabpanel"
+            aria-labelledby="tab-certs"
+            hidden
+          >
+            <div class="panel__header">
+              <h2>Certifications & Badges</h2>
+              <span class="badge">ls Certifications/ -lh</span>
+            </div>
+            <p>
+              Je documente mon apprentissage avec des programmes pratiques qui renforcent
+              mes capacités DevOps, mobile et collaboration Git.
+            </p>
+            <div class="cert-grid">
+              <article class="cert-card">
+                <h3>Docker Crash Course</h3>
+                <p>Containers, réseaux custom, best practices images.</p>
+                <a href="Certifications/dockerCrashCourse.pdf" target="_blank" rel="noreferrer">Voir le certificat</a>
+              </article>
+              <article class="cert-card">
+                <h3>Docker Training Course</h3>
+                <p>CI/CD containerisée, orchestration et secrets management.</p>
+                <a href="Certifications/dockerTrainingCourse.pdf" target="_blank" rel="noreferrer">Voir le certificat</a>
+              </article>
+              <article class="cert-card">
+                <h3>Flutter Essentials</h3>
+                <p>Prototypage mobile, animations, intégrations API.</p>
+                <a href="Certifications/flutter.pdf" target="_blank" rel="noreferrer">Voir le certificat</a>
+              </article>
+              <article class="cert-card ghost">
+                <h3>Badge Git Foundations</h3>
+                <p>Branches propres, rebase, hooks et conventions d’équipe.</p>
+                <a href="Certifications/BadgeintroductionToGit.pdf" target="_blank" rel="noreferrer">Voir le badge</a>
+              </article>
+              <article class="cert-card ghost">
+                <h3>Badge GitHub Collaboration</h3>
+                <p>Project boards, GitHub Actions et workflow review/merge.</p>
+                <a href="Certifications/BadgeintroductionToGithub.pdf" target="_blank" rel="noreferrer">Voir le badge</a>
+              </article>
+            </div>
+          </section>
+
+          <section
+            id="skills"
+            class="panel tab-panel"
+            data-tab-panel="skills"
+            role="tabpanel"
+            aria-labelledby="tab-skills"
+            hidden
+          >
+            <div class="panel__header">
+              <h2>Compétences ciblées</h2>
+              <span class="badge">cout << "Toujours curieux";</span>
+            </div>
+            <div class="skills-grid">
+              <article>
+                <h3>Architecture</h3>
+                <p>Domain driven design, Event-driven, CQRS, API-first.</p>
+              </article>
+              <article>
+                <h3>Frontend</h3>
+                <p>React, Next.js, animations GSAP/Framer, accessibilité.</p>
+              </article>
+              <article>
+                <h3>Backend</h3>
+                <p>Node/Nest, Spring Boot, Prisma, PostgreSQL, MongoDB.</p>
+              </article>
+              <article>
+                <h3>Ops & Qualité</h3>
+                <p>Docker, GitHub Actions, Terraform étudiant, tests E2E.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section id="contact" class="panel contact">
+        <div class="panel__header">
+          <h2>Contact</h2>
+          <span class="badge">#open-to-work</span>
+        </div>
+        <p>
+          Tu cherches un étudiant Génie Logiciel qui code avec passion, structure
+          ses projets comme un pro et adore partager ses découvertes ? Parlons-en.
+        </p>
+        <div class="contact__grid">
+          <div>
+            <h3>Coordonnées</h3>
+            <ul>
+              <li><span>Email</span><a href="mailto:godbless.dev@gmail.com">godbless.dev@gmail.com</a></li>
+              <li><span>GitHub</span><a href="https://github.com/godbless-dev" target="_blank" rel="noreferrer">github.com/godbless-dev</a></li>
+              <li><span>LinkedIn</span><a href="https://linkedin.com/in/godbless-dev" target="_blank" rel="noreferrer">linkedin.com/in/godbless-dev</a></li>
+              <li><span>CV</span><a href="assets/cv.pdf" download="CV_Godbless.pdf">Télécharger mon CV</a></li>
+            </ul>
+          </div>
+          <form class="contact__form" netlify>
+            <label>
+              Nom/Pseudo
+              <input type="text" name="name" placeholder="Neo, Trinity, toi..." required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" placeholder="Décris ta quête technologique" required></textarea>
+            </label>
+            <button class="btn primary" type="submit">Envoyer en hyperespace</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> Godbless • Étudiant Génie Logiciel • Powered by café & curiosité.</p>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
